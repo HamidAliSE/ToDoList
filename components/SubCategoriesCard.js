@@ -1,6 +1,6 @@
 import React from "react";
-import { StyleSheet, Dimensions } from "react-native";
-import { Card, Title } from "react-native-paper";
+import { View, StyleSheet, Dimensions } from "react-native";
+import { Title, TouchableRipple } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
 import { Black, Grey } from "../resources/constants/colors";
@@ -21,12 +21,12 @@ const SubCategoriesCard = (props) => {
   };
 
   return (
-    <Card onPress={onPressCard}>
-      <Card.Content style={styles.card}>
+    <TouchableRipple onPress={onPressCard}>
+      <View style={styles.card}>
         <Icon name={props.iconName} color={Black} size={24} />
         <Title style={styles.title}>{props.title}</Title>
-      </Card.Content>
-    </Card>
+      </View>
+    </TouchableRipple>
   );
 };
 
@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     borderColor: Grey,
+    paddingVertical: 16,
     alignItems: "center",
     width: Math.round(Dimensions.get("screen").width / 2) - 24,
   },
