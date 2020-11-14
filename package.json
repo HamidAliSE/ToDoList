@@ -8,13 +8,8 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "@material-ui/core": "^4.11.0",
-    "@material-ui/icons": "^4.9.1",
-    "@mdi/js": "^5.8.55",
-    "@mdi/react": "^1.4.0",
     "@react-native-community/async-storage": "^1.11.0",
     "@react-native-community/masked-view": "^0.1.10",
-    "@react-native-community/toolbar-android": "0.1.0-rc.2",
     "@react-navigation/native": "^5.7.0",
     "@react-navigation/stack": "^5.7.0",
     "expo": "~38.0.1",
@@ -26,7 +21,6 @@
     "react-native-gesture-handler": "^1.6.1",
     "react-native-paper": "^4.2.0",
     "react-native-reanimated": "^1.9.0",
-    "react-native-router-flux": "^4.2.0",
     "react-native-safe-area-context": "^3.0.2",
     "react-native-screens": "^2.9.0",
     "react-native-vector-icons": "^7.1.0",
