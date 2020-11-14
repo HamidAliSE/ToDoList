@@ -3,7 +3,6 @@ import { FAB } from "react-native-paper";
 import { StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
-import { Black } from "../resources/constants/strings";
 import { AddTask } from "../resources/constants/strings";
 
 const FloatingActionButton = (props) => {
@@ -11,7 +10,7 @@ const FloatingActionButton = (props) => {
     <FAB
       onPress={props.onPress}
       style={styles.floatingActionButton}
-      icon={() => <Icon name="add" size={24} color={Black} />}
+      icon={() => <Icon name="add" size={24} />}
       label={AddTask}
     ></FAB>
   );
