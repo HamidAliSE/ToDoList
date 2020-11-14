@@ -1,6 +1,6 @@
 import React from "react";
-import { View, TouchableOpacity, StyleSheet } from "react-native";
-import { Title } from "react-native-paper";
+import { View, StyleSheet } from "react-native";
+import { Title, TouchableRipple } from "react-native-paper";
 
 import { White, Black, Grey, Error } from "../resources/constants/colors";
 
@@ -9,23 +9,25 @@ const TaskBox = (props) => {
     <View>
       {props.taskActiveState ? (
         <View style={[styles.taskBox, { backgroundColor: Error }]}>
-          <TouchableOpacity
+          <TouchableRipple
+            rippleColor={Error}
             onPress={props.onPress}
             onLongPress={props.onLongPress}
           >
             <Title style={[styles.taskText, { color: White }]}>
               {props.taskText}
             </Title>
-          </TouchableOpacity>
+          </TouchableRipple>
         </View>
       ) : (
         <View style={styles.taskBox}>
-          <TouchableOpacity
+          <TouchableRipple
+            rippleColor={Error}
             onPress={props.onPress}
             onLongPress={props.onLongPress}
           >
             <Title style={styles.taskText}>{props.taskText}</Title>
-          </TouchableOpacity>
+          </TouchableRipple>
         </View>
       )}
     </View>
@@ -38,13 +40,13 @@ const styles = StyleSheet.create({
     borderColor: Grey,
     borderRadius: 5,
     borderWidth: 1,
-    paddingHorizontal: 8,
     alignSelf: "flex-start",
   },
   taskText: {
     fontFamily: "sans-serif",
-    color: Black,
+    marginHorizontal: 8,
     fontSize: 16,
+    color: Black,
   },
 });
 
