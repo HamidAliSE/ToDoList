@@ -42,22 +42,6 @@ const AddTaskScreen = ({ route, navigation }) => {
   }, [route.params?.taskText]);
 
   useEffect(() => {
-    const updateHeader = () => {
-      navigation.setOptions({
-        headerTintColor: Black,
-        headerStyle: {
-          backgroundColor: Secondary,
-        },
-        headerLeft: (props) => (
-          <IconButton
-            icon="clear"
-            color={Black}
-            onPress={() => navigation.goBack()}
-            {...props}
-          />
-        ),
-      });
-    };
     const readCounter = async () => {
       const stringifiedCounter = await AsyncStorage.getItem("counter");
       if (stringifiedCounter !== null) {
@@ -66,7 +50,6 @@ const AddTaskScreen = ({ route, navigation }) => {
     };
 
     if (!isReady) {
-      updateHeader();
       readCounter();
       setIsReady(true);
     }

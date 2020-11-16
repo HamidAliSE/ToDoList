@@ -1,5 +1,6 @@
 import "react-native-gesture-handler";
 import React from "react";
+import { IconButton } from "react-native-paper";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
@@ -19,7 +20,12 @@ import RolesScreen from "../screens/RolesScreen";
 import HelpersScreen from "../screens/HelpersScreen";
 import AddTaskScreen from "../screens/AddTaskScreen";
 
-import { Primary, White } from "../resources/constants/colors";
+import {
+  Primary,
+  Secondary,
+  Black,
+  White,
+} from "../resources/constants/colors";
 
 const Stack = createStackNavigator();
 
@@ -58,7 +64,14 @@ const Routes = () => {
         <Stack.Screen
           name={AddTask}
           component={AddTaskScreen}
-          options={{ headerTitle: AddTask }}
+          options={{
+            headerTitle: AddTask,
+            headerTintColor: Black,
+            headerStyle: {
+              backgroundColor: Secondary,
+            },
+            headerLeft: (props) => <IconButton icon="clear" {...props} />,
+          }}
         ></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
