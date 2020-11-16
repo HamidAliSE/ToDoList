@@ -251,7 +251,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   footer: {
-    marginVertical: 36,
+    marginVertical: 32,
   },
   appBarActionContainer: {
     flexDirection: "row",
