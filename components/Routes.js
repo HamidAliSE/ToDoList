@@ -1,31 +1,33 @@
 import "react-native-gesture-handler";
+
 import React from "react";
+
 import { IconButton } from "react-native-paper";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import {
-  AppName,
+  Black,
+  White,
+  Primary,
+  Secondary,
+} from "../resources/constants/colors";
+
+import {
   Rules,
   Roles,
+  Tasks,
   Helpers,
   AddTask,
-  Tasks,
+  AppName,
 } from "../resources/constants/strings";
 
-import ListManagerScreen from "../screens/ListManagerScreen";
 import TasksScreen from "../screens/TasksScreen";
 import RulesScreen from "../screens/RulesScreen";
 import RolesScreen from "../screens/RolesScreen";
 import HelpersScreen from "../screens/HelpersScreen";
 import AddTaskScreen from "../screens/AddTaskScreen";
-
-import {
-  Primary,
-  Secondary,
-  Black,
-  White,
-} from "../resources/constants/colors";
+import ListManagerScreen from "../screens/ListManagerScreen";
 
 const Stack = createStackNavigator();
 
@@ -37,6 +39,7 @@ const Routes = () => {
         headerMode="screen"
         screenOptions={{
           headerTintColor: White,
+          animationEnabled: false,
           headerStyle: { backgroundColor: Primary },
         }}
       >

@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { View, StyleSheet, FlatList } from "react-native";
-import AsyncStorage from "@react-native-community/async-storage";
+import { View, FlatList, StyleSheet } from "react-native";
+
 import { IconButton } from "react-native-paper";
+import AsyncStorage from "@react-native-community/async-storage";
 
 import { AddTask } from "../resources/constants/strings";
-
 import {
   Black,
+  White,
   Primary,
   Secondary,
-  White,
+  PrimaryDark,
+  SecondaryDark,
 } from "../resources/constants/colors";
 
 import TaskBox from "../components/TaskBox";
 import StatusBar from "../components/StatusBar";
-
 import VerticalMargin from "../components/VerticalMargin";
 import FloatingActionButton from "../components/FloatingActionButton";
 
@@ -95,7 +96,7 @@ const TasksScreen = ({ route, navigation }) => {
       );
       const array = stringifiedValue ? JSON.parse(stringifiedValue) : undefined;
       if (array !== undefined) {
-        //   console.log(array);
+        console.log(array);
         setList(array);
       }
     };
@@ -215,9 +216,9 @@ const TasksScreen = ({ route, navigation }) => {
 
   return (
     <View style={styles.screen}>
-      {selectedTaskCount ? (
-        <StatusBar changeBackgroundColor={true} />
-      ) : undefined}
+      <StatusBar
+        backgroundColor={selectedTaskCount ? SecondaryDark : PrimaryDark}
+      />
 
       <FlatList
         data={list}

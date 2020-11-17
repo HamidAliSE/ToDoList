@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, ToastAndroid } from "react-native";
+import {
+  View,
+  StyleSheet,
+  ToastAndroid,
+  StatusBar as statusBar,
+} from "react-native";
+
+import { Button, TextInput } from "react-native-paper";
 import AsyncStorage from "@react-native-community/async-storage";
-import { IconButton, Button, TextInput } from "react-native-paper";
 
-import { White, Secondary, Black } from "../resources/constants/colors";
 import { Add, Task, Tasks } from "../resources/constants/strings";
+import { White, Secondary, SecondaryDark } from "../resources/constants/colors";
 
-import VerticalMargin from "../components/VerticalMargin";
 import StatusBar from "../components/StatusBar";
+import VerticalMargin from "../components/VerticalMargin";
 
 const AddTaskScreen = ({ route, navigation }) => {
   const [isReady, setIsReady] = useState(false);
@@ -50,6 +56,8 @@ const AddTaskScreen = ({ route, navigation }) => {
     };
 
     if (!isReady) {
+      statusBar.setBackgroundColor(SecondaryDark);
+
       readCounter();
       setIsReady(true);
     }
@@ -68,7 +76,7 @@ const AddTaskScreen = ({ route, navigation }) => {
 
   return (
     <View style={styles.screen}>
-      <StatusBar changeBackgroundColor={true} />
+      <StatusBar backgroundColor={SecondaryDark} />
       <View style={styles.inputContainer}>
         <VerticalMargin />
         <TextInput

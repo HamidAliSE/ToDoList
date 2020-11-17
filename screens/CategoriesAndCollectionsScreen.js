@@ -2,19 +2,19 @@ import React from "react";
 import { View, StyleSheet, FlatList } from "react-native";
 
 import { Categories } from "../resources/constants/strings";
-
-import { White } from "../resources/constants/colors";
+import { White, PrimaryDark } from "../resources/constants/colors";
 
 import Divider from "../components/Divider";
+import StatusBar from "../components/StatusBar";
 import SectionHeader from "../components/SectionHeader";
 import VerticalMargin from "../components/VerticalMargin";
-
 import CategoriesItem from "../components/CategoriesItem";
 import SubCategoriesCard from "../components/SubCategoriesCard";
 
 const CategoriesAndCollectionsScreen = (props) => {
   return (
     <View style={styles.screen}>
+      <StatusBar backgroundColor={PrimaryDark} />
       <FlatList
         data={props.list}
         keyExtractor={(item, index) => item.title}
