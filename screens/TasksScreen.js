@@ -96,7 +96,7 @@ const TasksScreen = ({ route, navigation }) => {
       );
       const array = stringifiedValue ? JSON.parse(stringifiedValue) : undefined;
       if (array !== undefined) {
-        console.log(array);
+        // console.log(array);
         setList(array);
       }
     };

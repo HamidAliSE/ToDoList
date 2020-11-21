@@ -19,22 +19,17 @@ const AddTaskScreen = ({ route, navigation }) => {
   const [isReady, setIsReady] = useState(false);
   const [counter, setCounter] = useState(0);
   const [text, setText] = useState("");
+  const [task, setTask] = useState();
 
   const onPressAddButton = () => {
-    const getID = () => {
-      return route.params.ScreenName + counter.toString();
-    };
-
     if (text) {
-      setCounter(counter + 1);
       if (route.params?.taskText) {
         navigation.navigate(Tasks, {
           taskText: text,
         });
       } else {
-        navigation.navigate(Tasks, {
-          task: { id: getID(), taskText: text, taskActiveState: false },
-        });
+        setCounter(counter + 1);
+        setTask({});
       }
     } else {
       ToastAndroid.show("No Task Entered.", ToastAndroid.SHORT);
@@ -67,8 +62,23 @@ const AddTaskScreen = ({ route, navigation }) => {
     const updateCounter = async () => {
       await AsyncStorage.setItem("counter", counter.toString());
     };
-    updateCounter();
+
+    if (counter !== 0) {
+      updateCounter();
+    }
   }, [counter]);
+
+  useEffect(() => {
+    const getID = () => {
+      return route.params.ScreenName + counter.toString();
+    };
+
+    if (task !== undefined) {
+      navigation.navigate(Tasks, {
+        task: { id: getID(), taskText: text, taskActiveState: false },
+      });
+    }
+  }, [task]);
 
   if (!isReady) {
     return null;
