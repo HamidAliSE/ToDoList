@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { View, FlatList, StyleSheet } from "react-native";
+import React, { useEffect, useState, useCallback } from "react";
+import { View, FlatList, BackHandler, StyleSheet } from "react-native";
 
 import { IconButton } from "react-native-paper";
+import { useFocusEffect } from "@react-navigation/native";
 import AsyncStorage from "@react-native-community/async-storage";
 
 import { AddTask } from "../resources/constants/strings";
@@ -34,6 +35,11 @@ const TasksScreen = ({ route, navigation }) => {
     list.find((task) => task.id === value).taskActiveState = !list.find(
       (task) => task.id === value
     ).taskActiveState;
+  };
+
+  const onCancelSelection = () => {
+    selectedTaskIDArray.forEach(flipActiveState);
+    setSelectedTaskIDArray([]);
   };
 
   const successfulPressTaskBox = (id) => {
@@ -112,11 +118,6 @@ const TasksScreen = ({ route, navigation }) => {
   }, [selectedTaskIDArray]);
 
   useEffect(() => {
-    const onPressCancel = () => {
-      selectedTaskIDArray.forEach(flipActiveState);
-      setSelectedTaskIDArray([]);
-    };
-
     const onPressDelete = () => {
       const deleteTask = (value, index, array) => {
         list.splice(
@@ -169,7 +170,7 @@ const TasksScreen = ({ route, navigation }) => {
           backgroundColor: Secondary,
         },
         headerLeft: () => (
-          <IconButton icon="clear" color={Black} onPress={onPressCancel} />
+          <IconButton icon="clear" color={Black} onPress={onCancelSelection} />
         ),
         headerRight: () => (
           <View style={styles.appBarActionContainer}>
@@ -188,7 +189,7 @@ const TasksScreen = ({ route, navigation }) => {
           backgroundColor: Secondary,
         },
         headerLeft: () => (
-          <IconButton icon="clear" color={Black} onPress={onPressCancel} />
+          <IconButton icon="clear" color={Black} onPress={onCancelSelection} />
         ),
         headerRight: () => (
           <View style={styles.appBarActionContainer}>
@@ -209,6 +210,22 @@ const TasksScreen = ({ route, navigation }) => {
         onMultipleTaskSelected();
     }
   }, [selectedTaskCount]);
+
+  useFocusEffect(
+    useCallback(() => {
+      const onBackPress = () => {
+        if (selectedTaskCount) {
+          onCancelSelection();
+          return true;
+        }
+        return false;
+      };
+
+      BackHandler.addEventListener("hardwareBackPress", onBackPress);
+      return () =>
+        BackHandler.removeEventListener("hardwareBackPress", onBackPress);
+    })
+  );
 
   if (!isReady) {
     return null;
