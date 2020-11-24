@@ -48,7 +48,11 @@ const Routes = () => {
           component={ListManagerScreen}
           options={{ headerTitle: AppName }}
         ></Stack.Screen>
-        <Stack.Screen name={Tasks} component={TasksScreen}></Stack.Screen>
+        <Stack.Screen
+          name={Tasks}
+          component={TasksScreen}
+          options={({ route }) => ({ headerTitle: route.params.ScreenName })}
+        ></Stack.Screen>
         <Stack.Screen
           name={Rules}
           component={RulesScreen}
