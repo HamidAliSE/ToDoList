@@ -118,6 +118,18 @@ const TasksScreen = ({ route, navigation }) => {
   }, [selectedTaskIDArray]);
 
   useEffect(() => {
+    const onPressSelectAll = () => {
+      const addToSelection = (value, index, array) => {
+        if (!value.taskActiveState) {
+          array[index].taskActiveState = true;
+          selectedTaskIDArray.push(value.id);
+        }
+      };
+
+      list.forEach(addToSelection);
+      setSelectedTaskIDArray([...selectedTaskIDArray]);
+    };
+
     const onPressDelete = () => {
       const deleteTask = (value, index, array) => {
         list.splice(
@@ -139,12 +151,7 @@ const TasksScreen = ({ route, navigation }) => {
           backgroundColor: Primary,
         },
         headerLeft: (props) => (
-          <IconButton
-            icon="arrow-back"
-            color={White}
-            onPress={() => navigation.goBack()}
-            {...props}
-          />
+          <IconButton icon="arrow-back" color={White} {...props} />
         ),
         headerRight: undefined,
       });
@@ -170,12 +177,17 @@ const TasksScreen = ({ route, navigation }) => {
           backgroundColor: Secondary,
         },
         headerLeft: () => (
-          <IconButton icon="clear" color={Black} onPress={onCancelSelection} />
+          <IconButton icon="clear" onPress={onCancelSelection} />
         ),
         headerRight: () => (
           <View style={styles.appBarActionContainer}>
-            <IconButton icon="edit" color={Black} onPress={onPressEdit} />
-            <IconButton icon="delete" color={Black} onPress={onPressDelete} />
+            <IconButton icon="edit" onPress={onPressEdit} />
+            <IconButton icon="delete" onPress={onPressDelete} />
+            <IconButton
+              icon="select-all"
+              disabled={selectedTaskCount === list.length ? true : false}
+              onPress={onPressSelectAll}
+            />
           </View>
         ),
       });
@@ -189,11 +201,16 @@ const TasksScreen = ({ route, navigation }) => {
           backgroundColor: Secondary,
         },
         headerLeft: () => (
-          <IconButton icon="clear" color={Black} onPress={onCancelSelection} />
+          <IconButton icon="clear" onPress={onCancelSelection} />
         ),
         headerRight: () => (
           <View style={styles.appBarActionContainer}>
-            <IconButton icon="delete" color={Black} onPress={onPressDelete} />
+            <IconButton icon="delete" onPress={onPressDelete} />
+            <IconButton
+              icon="select-all"
+              disabled={selectedTaskCount === list.length ? true : false}
+              onPress={onPressSelectAll}
+            />
           </View>
         ),
       });
