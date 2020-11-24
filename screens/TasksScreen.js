@@ -92,7 +92,8 @@ const TasksScreen = ({ route, navigation }) => {
       selectedTaskIDArray.forEach(editText);
       selectedTaskIDArray.forEach(flipActiveState);
       writeData();
-      setSelectedTaskIDArray([]);
+      selectedTaskIDArray.forEach(flipActiveState);
+      setSelectedTaskIDArray([...selectedTaskIDArray]);
     }
   }, [route.params?.taskText]);
 
