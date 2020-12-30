@@ -10,4 +10,4 @@ export const GreyDark = "#808080";
 export const White = "#FFFFFF";
 export const Black = "#000000";
 
-export const Error = "#B00020";
+export const Error = "#C51162";
