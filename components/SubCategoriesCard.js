@@ -4,11 +4,27 @@ import { Title, TouchableRipple } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
 import { Black, Grey } from "../resources/constants/colors";
-import { Rules, Roles, Helpers } from "../resources/constants/strings";
+import {
+  Routine,
+  Rules,
+  Roles,
+  Helpers,
+  Personal,
+  Professional,
+  Shopping,
+  Places,
+  Plans,
+  Events,
+  Guest,
+  Host,
+} from "../resources/constants/strings";
 
 const SubCategoriesCard = (props) => {
   const onPressCard = () => {
     switch (props.title) {
+      case "Routine":
+        props.navigation.push(Routine);
+        break;
       case "Rules":
         props.navigation.push(Rules);
         break;
@@ -17,6 +33,30 @@ const SubCategoriesCard = (props) => {
         break;
       case "Helpers":
         props.navigation.push(Helpers);
+        break;
+      case "Personal":
+        props.navigation.push(Personal);
+        break;
+      case "Professional":
+        props.navigation.push(Professional);
+        break;
+      case "Shopping":
+        props.navigation.push(Shopping);
+        break;
+      case "Places":
+        props.navigation.push(Places);
+        break;
+      case "Plans":
+        props.navigation.push(Plans);
+        break;
+      case "Events":
+        props.navigation.push(Events);
+        break;
+      case "Guest":
+        props.navigation.push(Guest);
+        break;
+      case "Host":
+        props.navigation.push(Host);
     }
   };
 

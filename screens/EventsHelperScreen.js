@@ -5,11 +5,11 @@ import CategoriesAndCollectionsScreen from "./CategoriesAndCollectionsScreen";
 import {
   Categories,
   Collections,
-  Personal,
-  Professional,
+  Guest,
+  Host,
 } from "../resources/constants/strings";
 
-const RolesScreen = ({ navigation }) => {
+const EventsHelperScreen = ({ navigation }) => {
   const List = [
     {
       title: Categories,
@@ -19,12 +19,12 @@ const RolesScreen = ({ navigation }) => {
       title: Collections,
       data: [
         {
-          title: Personal,
-          iconName: "lock",
+          title: Guest,
+          iconName: "person-outline",
         },
         {
-          title: Professional,
-          iconName: "work",
+          title: Host,
+          iconName: "person",
         },
       ],
     },
@@ -33,4 +33,4 @@ const RolesScreen = ({ navigation }) => {
   return <CategoriesAndCollectionsScreen list={List} navigation={navigation} />;
 };
 
-export default RolesScreen;
+export default EventsHelperScreen;

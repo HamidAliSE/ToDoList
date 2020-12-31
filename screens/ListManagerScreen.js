@@ -5,13 +5,15 @@ import CategoriesAndCollectionsScreen from "./CategoriesAndCollectionsScreen";
 import {
   Categories,
   Collections,
-  Routine,
+  Remember,
   PendingTasks,
+  Leisure,
   FuturePlans,
+  WishList,
+  Routine,
   Rules,
   Roles,
   Helpers,
-  WishList,
 } from "../resources/constants/strings";
 
 const ListManagerScreen = ({ navigation }) => {
@@ -20,12 +22,16 @@ const ListManagerScreen = ({ navigation }) => {
       title: Categories,
       data: [
         {
-          title: Routine,
-          iconName: "today",
+          title: Remember,
+          iconName: "bookmark-border",
         },
         {
           title: PendingTasks,
           iconName: "restore",
+        },
+        {
+          title: Leisure,
+          iconName: "airline-seat-recline-extra",
         },
         {
           title: FuturePlans,
@@ -40,6 +46,10 @@ const ListManagerScreen = ({ navigation }) => {
     {
       title: Collections,
       data: [
+        {
+          title: Routine,
+          iconName: "autorenew",
+        },
         {
           title: Rules,
           iconName: "check-box-outline-blank",

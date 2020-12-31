@@ -5,48 +5,47 @@ import CategoriesAndCollectionsScreen from "./CategoriesAndCollectionsScreen";
 import {
   Categories,
   Collections,
-  Hobby,
+  Visit,
+  Contact,
+  Food,
   Shopping,
-  Places,
-  Plans,
-  Events,
+  OutingORTrip,
 } from "../resources/constants/strings";
 
-const HelpersScreen = ({ navigation }) => {
+const PlansHelperScreen = ({ navigation }) => {
   const List = [
     {
       title: Categories,
       data: [
         {
-          title: Hobby,
-          iconName: "favorite",
+          title: Visit,
+          iconName: "home",
         },
-      ],
-    },
-    {
-      title: Collections,
-      data: [
+        {
+          title: Contact,
+          iconName: "contacts",
+        },
+        {
+          title: Food,
+          iconName: "restaurant-menu",
+        },
         {
           title: Shopping,
           iconName: "store",
         },
         {
-          title: Places,
-          iconName: "place",
-        },
-        {
-          title: Plans,
-          iconName: "toc",
-        },
-        {
-          title: Events,
-          iconName: "event",
+          title: OutingORTrip,
+          iconName: "map",
         },
       ],
+    },
+    {
+      title: Collections,
+      data: [],
     },
   ];
 
   return <CategoriesAndCollectionsScreen list={List} navigation={navigation} />;
 };
 
-export default HelpersScreen;
+export default PlansHelperScreen;

@@ -32,6 +32,7 @@ const CategoriesAndCollectionsScreen = (props) => {
                 );
               }}
               ListHeaderComponentStyle={styles.header}
+              ListFooterComponent={Divider}
               renderItem={(itemData) => (
                 <CategoriesItem
                   title={itemData.item.title}
